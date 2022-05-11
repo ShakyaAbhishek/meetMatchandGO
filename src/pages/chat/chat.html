@@ -1,0 +1,89 @@
+<ion-header>
+  
+  <!-- <custom-logged-header [title]="pageTitle" [user]="recipient"></custom-logged-header> -->
+  <ion-navbar>
+
+    <!-- <button ion-button menuToggle="user-menu" >
+      <ion-icon name="menu"></ion-icon>
+    </button> -->
+    <!-- <button>click</button> -->
+    <ion-title>
+      
+      <ion-item detail-none no-lines color="transparent" *ngIf="recipient; else titleTemplate">
+        <ion-avatar item-start>
+          <img [src]="recipient.imageUrl || 'assets/images/no-photo.jpg'">
+        </ion-avatar>
+        {{ pageTitle }}
+      </ion-item>
+  
+      <ng-template #titleTemplate>
+        {{ pageTitle }}
+      </ng-template>
+      
+    </ion-title>
+  
+    <!-- <ion-buttons end>
+      <button ion-button icon-only (click)="onLogout()">
+        <ion-icon name="exit"></ion-icon>
+      </button>
+    </ion-buttons> -->
+  
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <!-- <img src="./assets/imgs/background_img.jpg" class="background-Image"> -->
+  <!-- <div *ngFor="let users of user_list; let i=index">
+    <div *ngIf="users.hasRequest.is_accepted==0">
+    <message-box > waiting for the response </message-box>
+  </div>
+    <div *ngIf="users.hasRequest.is_accepted==1" > -->
+    
+    
+
+      <div *ngFor="let m of allmessages"  >
+      <label class="dates" style="border-radius: 10px; text-align:center;position: sticky; opacity: 0.8; " *ngIf=" m.date ">{{ m.timestamp | date:' dd-MM-yyyy' }}</label>
+      <div  [ngClass]="(m.userId === sender.firebaseId)?'sender':'receiver'"  >
+      <div class="text " [ngClass]="(m.userId === sender.firebaseId)?'sender-background':'reciver-background'">
+       <div [ngStyle]="{'text-align': (m.userId == sender.firebaseId) ? 'justify' : 'justify' }"><p  >{{ m.text }}</p></div>
+      <p class="timestamp" [ngStyle]="{'text-align': (m.userId == sender.firebaseId) ? 'right' : 'left' }">{{ m.timestamp | date:' hh:mm a' }}</p>
+     </div>
+    </div>
+ </div>
+ 
+ 
+  <!-- <message-box   *ngFor="let m of viewMessages | async;" [message]="m" [isFromSender]="(m.userId === sender.firebaseId)" style="padding: 16px;"></message-box> -->
+  <!-- </div></div> -->
+
+  </ion-content>
+              
+
+<ion-footer>
+
+<ion-toolbar>
+    <ion-item  no-lines>
+    
+  
+   
+<!--     <ion-textarea  #msgInput rows="2" type=" messages " onkeyup="event" [disabled]="block" (keyup.enter)="sendMessage(newMessage); newMessage=''" placeholder="{{ block?'Your blocked':'Message...'}}" [(ngModel)]="newMessage"></ion-textarea>
+     <button ion-button item-end  [disabled]="block" (click)="sendMessage(newMessage); newMessage=''">
+     <ion-icon name="send"></ion-icon>
+    </button>  -->
+   <!--    <ion-input type=" messages "  onkeyup="event" [disabled]="block" (keyup.enter)="sendMessage(newMessage); newMessage=''" placeholder="{{ block?'Your blocked':'Message...'}}" [(ngModel)]="newMessage" ></ion-input> -->
+   <div class="sender1">
+    <textarea id="inputID" type="text " rows="2" cols="40" class="text1" onkeyup="event" [disabled]="block" (keyup.enter)="sendMessage(newMessage); newMessage=''" placeholder="{{ block?'You are blocked':'Message..'}}" [(ngModel)]="newMessage" ></textarea>
+
+    
+     <label for="inputID" class="send-chat" (click)="sendMessage(newMessage); newMessage=''"> 
+        <ion-icon name="send"></ion-icon>    
+     </label>                                                                                                                                                                                             
+     
+    
+    </div>   
+   </ion-item>
+   
+  </ion-toolbar>
+
+ </ion-footer>

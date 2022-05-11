@@ -1,0 +1,63 @@
+<!--
+  Generated template for the PendingApprovalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+      <!-- <ion-grid style="align-items: normal;" >
+          <ion-row>
+            <ion-col col-3><button ion-button menuToggle>
+                <ion-icon style="font-size: 3.2rem;margin-top: 5px; " name="menu"> </ion-icon>
+              </button>
+            </ion-col>
+            <ion-col col-6><div style="width: 100% !important;
+              margin-right: 15% !important;
+              margin-top: -5px;">
+                <img style="    width: 100%;" src="assets/imgs/logo.jpg">
+              </div>
+            </ion-col>
+            <ion-col col-3><button  ion-button (click)="opnchat()" style="background: transparent;
+              box-shadow: none;
+              margin-left: 20px;
+              margin-top: 0px;
+              color: #000000" ><ion-icon style="font-size: 3.2rem;margin-top: 5px; " name="chatbubbles"></ion-icon></button>
+            </ion-col>
+          </ion-row>
+        </ion-grid> -->
+        <button ion-button menuToggle>
+            <ion-icon name="menu"> </ion-icon>
+          </button>
+          <div class="img1" >
+            <img  src="assets/imgs/logo.jpg">
+          </div>
+          <ion-buttons  end>
+              <button ion-button icon-only (click)="opnchat()">
+                <ion-icon name="chatbubbles"></ion-icon>
+              </button>
+            </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <div style="text-align: center; color: #efba00; font-size: 20px; opacity: 0.8; filter: alpha(opacity=50); background-color: #800020; border-radius: 20px; margin: 5px 50px 0px 50px;">Pending Friend Requests </div>
+  <ion-list *ngFor="let request of requests; let i=index;">
+    <ion-item style="border-bottom: 1px solid;border-bottom-color: #efba00;">
+      <ion-avatar item-start>
+        <img [src]="request.sender_detail.id==loggedId?request.receiver_detail.image:request.sender_detail.image">
+      </ion-avatar>
+      <h2>{{request.receiver_detail.first_name+' '+request.receiver_detail.last_name}}</h2>
+      <p>{{request.location}}</p>
+      <p>Waiting for a response</p>
+      <!-- <button ion-button color="secondary" style="height: 2.6rem;font-size: 1.1rem;" (click)="acceptRequest()">Accept Request</button>
+      <button ion-button color="danger" style="height: 2.6rem;font-size: 1.1rem;"  (click)="deleteRequest()">Delete Request</button> -->
+    </ion-item>
+  </ion-list>
+ 
+  <ion-card  class="card_io" *ngIf="!isrequests">
+      <h2 align="center" style="margin: 5px 0px 2px 0px; font-size: 20px; color: #efba00;">No Pending Approvals Found!</h2>
+      
+  </ion-card>      
+</ion-content>

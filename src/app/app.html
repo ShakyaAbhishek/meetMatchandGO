@@ -1,0 +1,85 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-item *ngIf="logged==true;" style=" border-bottom: 0px  " >
+          <div class="img2"><ion-avatar item-start  ><img [src]="loggedData.imageUrlThumb"  (click)="openpic(loggedData.imageUrlThumb)"  style="border-radius: 50%; overflow: hidden; width: 100px; height: 100px;" /></ion-avatar>
+          </div>
+           <!-- for open image large use [imageViewer] -->
+      </ion-item>
+
+      <ion-item *ngIf="logged==false;" style=" border-bottom: 0px  " >
+        <div class="img2"><ion-avatar item-start  ><img [src]="loggedData.imageUrlThumb"   style="border-radius: 50%; overflow: hidden; width: 100px; height: 100px;" /></ion-avatar>
+        </div>
+         <!-- for open image large use [imageViewer] -->
+    </ion-item>
+
+      <h2 class="h2" style="color: #000" >Welcome {{loggedData.first_name}}</h2>
+      <!-- user last name ' '+ loggedData.last_name -->
+    </ion-toolbar>
+  </ion-header> 
+
+  <ion-content>
+    
+    <ion-list>
+      
+      <button style="border-bottom: 1px solid;" menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        <ion-icon name="{{p.icon}}"></ion-icon>
+        {{p.title}}
+      </button>
+    </ion-list>
+
+    <ion-list *ngIf="logged" >
+      <ion-item  text-wrap style="    border-bottom: 1px solid black;" (click)="toggleGroup2()" [ngClass]="{active: isGroupShown2()}"  > <label style=" color: #000; font-size: 16px; font-weight: 500;" > My Event</label>
+          <ion-icon style="position: absolute; right: 0; top: 0;" color="success" item-right [name]="isGroupShown2() ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+          <div style=" border-top: 1px solid;     margin: 15px 0px -10px 0; " *ngIf="isGroupShown2()"> <button menuClose ion-item *ngFor="let p of pages1" (click)="openPage(p)">
+              <ion-icon name="{{p.icon}}"></ion-icon>
+              {{p.title}}
+            </button></div>
+       </ion-item>
+  </ion-list>
+
+    <ion-list *ngIf="logged" >
+        <ion-item  text-wrap style="    border-bottom: 1px solid black;" (click)="toggleGroup1()" [ngClass]="{active: isGroupShown1()}"  > <label style=" color: #000; font-size: 16px; font-weight: 500;" > Friends</label>
+            <ion-icon style="position: absolute; right: 0; top: 0;" color="success" item-right [name]="isGroupShown1() ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+            <div style=" border-top: 1px solid;     margin: 15px 0px -10px 0; " *ngIf="isGroupShown1()"> <button menuClose ion-item *ngFor="let p of pages3" (click)="openPage(p)">
+                <ion-icon name="{{p.icon}}"></ion-icon>
+                {{p.title}}
+              </button></div>
+         </ion-item>
+    </ion-list>
+
+    <ion-list  >
+        <ion-item  text-wrap style="    border-bottom: 1px solid black;" (click)="toggleGroup()" [ngClass]="{active: isGroupShown()}"  > <label style=" color: #000; font-size: 16px; font-weight: 500;" > Help & Support</label>
+            <ion-icon style="position: absolute; right: 0; top: 0;" color="success" item-right [name]="isGroupShown() ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+            <div style=" border-top: 1px solid;    margin: 15px 0px -10px 0; " *ngIf="isGroupShown()"> <button menuClose ion-item *ngFor="let p of pages2" (click)="openPage(p)">
+                <ion-icon name="{{p.icon}}"></ion-icon>
+                {{p.title}}
+              </button></div>
+           
+        </ion-item>
+      <button menuClose ion-item  (click)="logout()" *ngIf="logged">
+        <ion-icon name="md-log-out"></ion-icon>
+        Logout
+      </button>
+    </ion-list>
+    
+  </ion-content>
+  <!-- <ion-footer *ngIf="footer">
+    <ion-toolbar color="primary">
+      <ion-buttons>
+        <button ion-button icon-left (click)="presentActionSheet()">
+          <ion-icon name="camera"></ion-icon>Select Image
+        </button>
+        <button ion-button icon-left (click)="uploadImage()" [disabled]="lastImage === null">
+          <ion-icon name="cloud-upload"></ion-icon>Upload
+        </button>
+        <button ion-button icon-left (click)="cancle11()" >
+            <ion-icon name="close"></ion-icon>
+          </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer> -->
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

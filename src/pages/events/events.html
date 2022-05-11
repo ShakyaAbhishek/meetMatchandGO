@@ -1,0 +1,141 @@
+<!--
+Generated template for the PastEventsPage page.
+
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <!-- <ion-grid style="align-items:normal;" >
+  <ion-row>
+  <ion-col col-3><button ion-button menuToggle>
+  <ion-icon style="font-size: 3.2rem;margin-top: 5px; " name="menu"> </ion-icon>
+  </button>
+  </ion-col>
+  <ion-col col-6><div style="width: 100% !important;
+  margin-right: 15% !important;
+  margin-top: -5px;">
+  <img style=" width: 100%;" src="assets/imgs/logo.jpg">
+  </div>
+  </ion-col>
+  <ion-col col-3>
+  <div *ngIf="logged==true" >
+  <button ion-button (click)="opnchat()" style="background: transparent;
+  box-shadow: none;
+  margin-left: 20px;
+  margin-top: 0px;
+  color: #000000" ><ion-icon style="font-size: 3.2rem;margin-top: 5px; " name="chatbubbles"></ion-icon></button>
+  </div> 
+  </ion-col>
+  </ion-row>
+  </ion-grid> -->
+    <button ion-button menuToggle>
+      <ion-icon name="menu"> </ion-icon>
+    </button>
+    <div class="img1">
+      <img src="assets/imgs/logo.jpg">
+    </div>
+    <ion-buttons *ngIf="logged==true" end>
+      <button ion-button icon-only (click)="opnchat()">
+        <ion-icon name="chatbubbles"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card *ngFor="let event of events; let i=index;">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-5>
+          <img [src]="event.image" style="height: 148px;" />
+          <div style=" text-align: center; background-color:#efba00; padding-top: 5px;padding-bottom: 5px;">
+            <font style=" color: #000;font-size: 15px;">{{event.event_date}}</font>
+          </div>
+        </ion-col>
+        <ion-col col-7>
+          <ion-card-title>
+            <font color="#8b3532" (click)="eventDetail(event.id)">{{event.event_type}} </font>
+            <p style="border-bottom: 1px solid; font-weight: 500;">{{event.location}}
+              <br> {{event.place}} </p>
+          </ion-card-title>
+          <font color="#8b3532" style="font-weight: 500; padding-bottom: 2px;">Tickets Price: </font>
+          <font color="#8b3532" style=" font-size: 17px; font-weight: 500;">{{event.formated_price}}</font><br>
+          <p>
+            <ion-icon name="people" style="color:#8b3532;"></ion-icon>
+            <font color="black" style="font-weight: 500;"> Age: Men({{event.age_range_men}})</font>
+          </p>
+          <p>
+            <ion-icon name="people" style="color:#8b3532;"></ion-icon>
+            <font color="black" style="font-weight: 500;"> Age: Women({{event.age_range_women}})</font>
+          </p>
+          <!-- for Men Availability -->
+          <label color="#8b3532" style="font-weight: 500;">Men: </label>
+          <font [color]="event.availability_m[1]=='yellow'?'#efba00':event.availability_m[1]">
+            <label style="font-weight: 700;" *ngIf="event.availability_men != 0">{{event.availability_m[0]}} {{event.availability_m[1]== 'green'? null : '('+(event.availability_m[2])+')' }} </label>
+            <button *ngIf="event.availability_men <= 0" style="border-radius: 2px; overflow: hidden; height: 1.6rem; font-size: 1.2rem; font-weight: 300;margin-top: -2px;"
+              ion-button color="secondary" (click)="addToWaitingLists(event.id,'M')">join waiting List</button>
+          </font> <!-- for Men Availability in numbers= +'( '+event.availability_men+ ')' -->
+          <!-- for Women Availability -->
+          <br> <label color="#8b3532" style="font-weight: 500;">Women: </label>
+          <font [color]="event.availability_f[1]=='yellow'?'#efba00':event.availability_f[1]">
+            <label style="font-weight: 700;" *ngIf="event.availability_women != 0">{{event.availability_f[0]}} {{event.availability_f[1]== 'green'? null : '('+(event.availability_f[2])+')' }} </label>
+            <button *ngIf="event.availability_women <= 0" style="border-radius: 2px; overflow: hidden; height: 1.6rem; font-size: 1.2rem; font-weight: 300;margin-top: -2px;"
+              ion-button color="secondary" (click)="addToWaitingLists(event.id,'F')">join waiting List</button>
+          </font> <!-- for Women Availability in numbers= +'( '+event.availability_women+ ')' -->
+          <!-- <div ngIf=" user.gender == 'F' " > ngIf="event.availability_women !=0 " -->
+          <ion-row>
+            <ion-col col-6>
+              <button ion-button color="danger" style="height: 2.6rem;font-size: 70%;margin: 7px 0px 2px -4px;" (click)="bookNow(event.id)"
+                full>BOOK NOW</button>
+            </ion-col>
+            <ion-col col-6>
+              <button ion-button color="danger" style="height: 2.6rem;font-size:70%;margin: 7px 0px 2px -3px;" (click)="eventDetail(event.id,event.event_date)"
+                full>MORE INFO</button>
+            </ion-col>
+          </ion-row>
+          <!-- </div> -->
+
+          <!-- <div *ngIf=" user.gender == 'M' " >
+  <ion-row >
+  <ion-col col-6 *ngIf="event.availability_men !=0 ">
+  <button ion-button color="danger" style="height: 2.6rem;font-size: 70%;margin: 7px 0px 2px -4px;" (click)="bookNow(event.id)" full>Book Now</button>
+  </ion-col>
+  <ion-col col-6>
+  <button ion-button color="danger" style="height: 2.6rem;font-size:70%;margin: 7px 0px 2px -3px;" (click)="eventDetail(event.id)" full>More Info</button>
+  </ion-col>
+  </ion-row>
+  </div>
+  <div *ngIf=" user.gender == '' " >
+  <ion-row >
+  <ion-col col-6 >
+  <button ion-button color="danger" style="height: 2.6rem;font-size: 70%;margin: 7px 0px 2px -4px;" (click)="bookNow1(event.id)" full>Book Now</button>
+  </ion-col>
+  <ion-col col-6>
+  <button ion-button color="danger" style="height: 2.6rem;font-size:70%;margin: 7px 0px 2px -3px;" (click)="eventDetail(event.id)" full>More Info</button>
+  </ion-col>
+  </ion-row>
+  </div=> -->
+        </ion-col>
+      </ion-row>
+
+
+
+    </ion-grid>
+    <div *ngIf="eventStartDate(event.event_activation_time) <= 14">
+      <p *ngIf="event.eodiscount" style="text-align: center; background-color: #efba00; color:black;font-size: 1.5rem;font-weight: 700;">Early
+        Bird Discount : <span style="color: green; font-weight: 700;"> {{event.eodiscount}}% off if purchased
+          now </span></p>
+    </div>
+    <p style="text-align: center;padding: 10px 0;padding: 8px 0;color:black;margin: 0 10px 10px 10px;font-weight: 800;font-size: 1.7rem; ">Booking
+      Time Left: <span class="counter">{{eventTimer(event.date_time,time)}}</span></p>
+  </ion-card>
+  <ion-card class="card_io" *ngIf="isevents">
+    <h2 align="center" style="margin: 5px 0px 2px 0px; font-size: 20px; color: #efba00;">No Events Found.</h2>
+
+  </ion-card>
+
+</ion-content>

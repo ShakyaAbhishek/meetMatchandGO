@@ -1,0 +1,145 @@
+<ion-header>
+  <ion-navbar>
+    
+    <!-- <ion-grid style="align-items: normal;" >
+      <ion-row>
+        <ion-col col-3><button ion-button menuToggle>
+            <ion-icon style="font-size: 3.2rem;margin-top: 5px; " name="menu"> </ion-icon>
+          </button>
+        </ion-col>
+        <ion-col col-6><div style="width: 100% !important;
+          margin-right: 15% !important;
+          margin-top: -5px;">
+            <img style="    width: 100%;" src="assets/imgs/logo.jpg">
+          </div>
+        </ion-col>
+        <ion-col col-3>
+          <div *ngIf="logged==true" >
+          <button  ion-button (click)="opnchat()" style="background: transparent;
+          box-shadow: none;
+          margin-left: 20px;
+          margin-top: 0px;
+          color: #000000" ><ion-icon style="font-size: 3.2rem;margin-top: 5px; " name="chatbubbles"></ion-icon></button>
+        </div>  
+      </ion-col>
+      </ion-row>
+    </ion-grid> -->
+    <button ion-button menuToggle>
+      <ion-icon name="menu"> </ion-icon>
+    </button>
+    <div  *ngIf="logged==true" class="img1">
+      <img src="assets/imgs/logo.jpg">
+    </div>
+    <div  *ngIf="logged==false" class="img1">
+        <img style="margin-right: 15%;" src="assets/imgs/logo.jpg">
+      </div>
+    <ion-buttons *ngIf="logged==true" end>
+        <button ion-button icon-only (click)="opnchat()">
+          <ion-icon name="chatbubbles"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides disable-side-menu-drag="" options="{'loop': true}" slider="slider1" delegate-handle="slider1" id="home-slider1"
+    style="width:100%;height:240px;" pager autoplay="2000">
+    <ion-slide id="home-slide24" style="background:url(&quot;assets/imgs/slide01.jpg&quot;) no-repeat center;background-size:cover;">
+      <div class="spacer" style="width: 300px; height: 20px;"></div>
+      <h3 id="home-heading1" style="color:#FFFFFF;text-align:center;">MEETMATCHANDGO</h3>
+      <div id="home-markdown1" style="text-align:center;" class="show-list-numbers-and-dots">
+        <p style="color:#EFBA00;font-size:12px;">We are a UK Speed Dating Company</p>
+      </div>
+      <div id="home-markdown2" style="text-align:center;" class="show-list-numbers-and-dots">
+        <p style="color:#FFFFFF;font-size:12px;">Here to help you find someone new - register for one of our events now.
+        </p>
+      </div>
+    </ion-slide>
+    <ion-slide id="home-slide27" style="background:url(&quot;assets/imgs/slide01.jpg&quot;) no-repeat center;background-size:cover;">
+      <div class="spacer" style="width: 300px; height: 20px;"></div>
+      <h3 id="home-heading2" style="color:#FFFFFF;text-align:center;">MEETMATCHANDGO</h3>
+      <div id="home-markdown5" style="text-align:center;" class="show-list-numbers-and-dots">
+        <p style="color:#EFBA00;font-size:12px;">We organise amazing speed dating events &amp; parties </p>
+      </div>
+      <div id="home-markdown6" style="text-align:center;" class="show-list-numbers-and-dots">
+        <p style="color:#FFFFFF;font-size:12px;">Follow us on <a (click)="open3()" title="Meetmatchandgo Twitter" target="new" style="color:#F90">Twitter</a>
+          / <a (click)="open2()" title="Meetmatchandgo on Facebook" target="new" style="color:#F90">Facebook</a>
+          <!-- and 
+          <a (click)="open4()" title="Meetmatchandgo on Google" target="_blank" style="color:#F90">Google
+          Plus</a> -->
+           to keep ahead of the latest events</p>
+      </div>
+    </ion-slide>
+    <ion-slide id="home-slide28" style="background:url(&quot;assets/imgs/slide01.jpg&quot;) no-repeat center;background-size:cover;">
+      <div class="spacer" style="width: 300px; height: 20px;"></div>
+      <h3 id="home-heading3" style="color:#FFFFFF;text-align:center;">MEETMATCHANDGO</h3>
+      <div id="home-markdown7" style="text-align:center;" class="show-list-numbers-and-dots">
+        <p style="color:#EFBA00;font-size:12px;">Dont miss out on finding someone new</p>
+      </div>
+      <div id="home-markdown8" style="text-align:center;" class="show-list-numbers-and-dots">
+        <p style="color:#FFFFFF;font-size:12px;">Check out our latest events below</p>
+      </div>
+    </ion-slide>
+    <ion-slide id="home-slide29" style="background:url(&quot;assets/imgs/slide01.jpg&quot;) no-repeat center;background-size:cover;">
+      <div class="spacer" style="width: 300px; height: 20px;"></div>
+      <h3 id="home-heading4" style="color:#FFFFFF;text-align:center;">MEETMATCHANDGO</h3>
+      <div id="home-markdown9" style="text-align:center;" class="show-list-numbers-and-dots">
+        <p style="color:#EFBA00;font-size:12px;">We have an excellant team of speed dating organisers</p>
+      </div>
+      <div id="home-markdown10" style="text-align:center;" class="show-list-numbers-and-dots">
+        <p style="color:#FFFFFF;font-size:12px;">to make you feel relaxed and comfortable our event</p>
+      </div>
+    </ion-slide>
+    <ion-slide id="home-slide210" style="background:url(&quot;assets/imgs/slide01.jpg&quot;) no-repeat center;background-size:cover;">
+      <div class="spacer" style="width: 300px; height: 20px;"></div>
+      <h3 id="home-heading5" style="color:#FFFFFF;text-align:center;">MEETMATCHANDGO</h3>
+      <div id="home-markdown11" style="text-align:center;" class="show-list-numbers-and-dots">
+        <p style="color:#EFBA00;font-size:12px;">Our organisers always make you feel welcomed</p>
+      </div>
+      <div id="home-markdown12" style="text-align:center;" class="show-list-numbers-and-dots">
+        <p style="color:#FFFFFF;font-size:12px;">so you are never left alone or embarrassed to be at any event</p>
+      </div>
+    </ion-slide>
+  </ion-slides>
+
+  <form id="home-form5" class="list">
+    <ion-item>
+        <ion-label class="label label-md" interface="action-sheet" stacked>     </ion-label>
+      <ion-datetime max="2030" displayFormat="DD/MM/YYYY" name="date" [(ngModel)]="search.date" placeholder="Select Event Start Date"></ion-datetime>
+    </ion-item>
+    <ion-item>
+        <ion-label class="label label-md" interface="action-sheet" stacked>    </ion-label>
+      <ion-select interface="action-sheet" placeholder="Select Event Type" name="event_type" [(ngModel)]="search.event_type"> 
+        <ion-option *ngFor="let type of eventTypes; let i=index;" [value]="type.event_type">{{type.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label class="label label-md" interface="action-sheet" stacked>   </ion-label>
+      <ion-select interface="action-sheet" placeholder="Select Country" name="country" [(ngModel)]="search.country" #C (ionChange)="getCities(C.value)">
+        <ion-option *ngFor="let country of countryList; let i=index;" [value]="country.country_id">{{country.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label class="label label-md" interface="action-sheet" stacked>    </ion-label>
+      <ion-select interface="action-sheet" placeholder="Select City" name="location" [(ngModel)]="search.location">
+        <ion-option *ngFor="let city of cityList; let i=index;" [value]="city.zone_id">{{city.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label class="label label-md" interface="action-sheet"  stacked>    </ion-label>
+      <ion-select interface="action-sheet" placeholder="Select Mens Age Group" name="age_men" [(ngModel)]="search.age_men">
+        <ion-option *ngFor="let age of ageGroupList; let i=index;" [value]="age.id">{{age.limits}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label class="label label-md" interface="action-sheet" stacked>     </ion-label>
+      <ion-select interface="action-sheet" placeholder="Select Womens Age Group" name="age_women" [(ngModel)]="search.age_women">
+        <ion-option *ngFor="let age of ageGroupList; let i=index;" [value]="age.id">{{age.limits}}</ion-option>
+      </ion-select>
+    </ion-item><br>
+    <!-- <button ion-button round icon-start (click)="searchEvents()"><ion-icon name="search" ></ion-icon> Search</button> -->
+  </form>
+</ion-content>
+<ion-footer style="text-align: center;background-color: #8b3532;padding: 4px 0 4px 0;">
+  <button ion-button round icon-start (click)="searchEvents()"><ion-icon name="search" ></ion-icon> Search</button>
+</ion-footer>

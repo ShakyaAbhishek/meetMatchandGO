@@ -1,0 +1,63 @@
+<!--
+  Generated template for the FaqSPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+      <!-- <ion-grid style="align-items: normal;" >
+          <ion-row>
+            <ion-col col-3><button ion-button menuToggle>
+                <ion-icon style="font-size: 3.2rem;margin-top: 5px; " name="menu"> </ion-icon>
+              </button>
+            </ion-col>
+            <ion-col col-6><div style="width: 100% !important;
+              margin-right: 15% !important;
+              margin-top: -5px;">
+                <img style="    width: 100%;" src="assets/imgs/logo.jpg">
+              </div>
+            </ion-col>
+            <ion-col col-3>
+              <button  ion-button (click)="opnchat()" style="background: transparent;
+              box-shadow: none;
+              margin-left: 20px;
+              margin-top: 0px;
+              color: #000000" ><ion-icon style="font-size: 3.2rem;margin-top: 5px; " name="chatbubbles"></ion-icon></button>
+            </ion-col>
+          </ion-row>
+        </ion-grid> -->
+        <button ion-button menuToggle>
+            <ion-icon name="menu"> </ion-icon>
+          </button>
+          <div  *ngIf="logged==true" class="img1">
+            <img src="assets/imgs/logo.jpg">
+          </div>
+          <div *ngIf="logged==false"  class="img1">
+              <img style="margin-right: 15%;" src="assets/imgs/logo.jpg">
+            </div>
+          <ion-buttons *ngIf="logged==true" end>
+              <button ion-button icon-only (click)="opnchat()">
+                <ion-icon name="chatbubbles"></ion-icon>
+              </button>
+            </ion-buttons>
+    
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div style="color:#990000; text-align: center"><h3>Frequently Asked Questions</h3></div>
+  <p>MeetMatchandGo’s useful frequently asked questions (FAQ) section provides information for people who haven’t been to a speed dating event before or require further information regarding the events. Take a look before you make a booking with us as they are sure to be of help to you.  If you’re still unsure about anything to do with speed dating evenings just get in touch with us at MeetMatchandGo.com where our staff can help you out in a friendly and understanding way.</p>
+
+  <ion-list>
+    <ion-item *ngFor="let d of faqs; let i=index" text-wrap (click)="toggleFaq(i)" [ngClass]="{active: isFaqShown(i)}">
+      <div class="border">
+        <h4>
+          {{d.question}}
+          <ion-icon class="faq-icon" color="success" item-right [name]="isFaqShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+        </h4>
+      </div>
+      <div *ngIf="isFaqShown(i)" class="faq-description">{{d.answer}}</div>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

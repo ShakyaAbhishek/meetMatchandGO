@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "676370397397",
+    "firebase_url": "https://meetmatchandgo-27e9f.firebaseio.com",
+    "project_id": "meetmatchandgo-27e9f",
+    "storage_bucket": "meetmatchandgo-27e9f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676370397397:android:84fa99106e0230ac",
+        "android_client_info": {
+          "package_name": "com.mmg.cqs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "676370397397-um7h91vudid7tjas3cj9ocv47dcij4qv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBT5ndZkfM3wkPWYu4_ZkAF5B3oJgtXs-U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676370397397:android:50afd5dcfd106dff",
+        "android_client_info": {
+          "package_name": "io.ionic.mmg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "676370397397-um7h91vudid7tjas3cj9ocv47dcij4qv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBT5ndZkfM3wkPWYu4_ZkAF5B3oJgtXs-U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,143 @@
+<!--
+  Generated template for the TicketRegistrationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+      <!-- <ion-grid style="align-items: normal;" >
+          <ion-row>
+            <ion-col col-3><button ion-button menuToggle>
+                <ion-icon style="font-size: 3.2rem;margin-top: 5px; " name="menu"> </ion-icon>
+              </button>
+            </ion-col>
+            <ion-col col-6><div style="width: 100% !important;
+              margin-right: 15% !important;
+              margin-top: -5px;">
+                <img style="    width: 100%;" src="assets/imgs/logo.jpg">
+              </div>
+            </ion-col>
+            <ion-col col-3><button  ion-button (click)="opnchat()" style="background: transparent;
+              box-shadow: none;
+              margin-left: 20px;
+              margin-top: 0px;
+              color: #000000" ><ion-icon style="font-size: 3.2rem;margin-top: 5px; " name="chatbubbles"></ion-icon></button>
+            </ion-col>
+          </ion-row>
+        </ion-grid> -->
+        <button ion-button menuToggle>
+            <ion-icon name="menu"> </ion-icon>
+          </button>
+          <div class="img1" >
+            <img  src="assets/imgs/logo.jpg">
+          </div>
+          <ion-buttons  end>
+              <button ion-button icon-only (click)="opnchat()">
+                <ion-icon name="chatbubbles"></ion-icon>
+              </button>
+            </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card class="card_io">
+
+    <ion-card-header>
+        <div style="color:#fff; font-weight:bold;text-align: center; display: block;" > {{eventname}} </div>
+     <font style="color:#efba00; font-weight:bold;text-align: center; display: block;"> TICKET REGISTRATION</font>
+     
+    </ion-card-header>
+  
+    <ion-card-content>
+        <form id="home-form5" class="list">
+          <ion-item>
+              <ion-label interface="action-sheet" stacked> Select Title</ion-label>
+              <!-- <ion-input style=" text-transform: capitalize;" type="text" placeholder=" Title" name="title" [(ngModel)]="user.title" interface="action-sheet"></ion-input> -->
+              <ion-select interface="action-sheet" name="title" [(ngModel)]="user.title" placeholder="Select Title" style="padding-left: 10px;"> 
+                <ion-option value="Mr">Mr</ion-option>
+                <ion-option value="Mrs">Mrs</ion-option>
+                <ion-option value="Ms">Ms</ion-option>
+                <ion-option value="Miss">Miss</ion-option>
+              </ion-select> 
+            </ion-item>
+            <label class="error" *ngIf="errors.title">{{errors.title}}</label>
+            <ion-item>
+                <ion-label interface="action-sheet" stacked> First Name</ion-label>
+                <ion-input type="text" placeholder=" First Name" name="first_name" [(ngModel)]="user.first_name" interface="action-sheet"></ion-input>
+              </ion-item>
+              <label class="error" *ngIf="errors.first_name">{{errors.first_name}}</label>
+              <ion-item>
+                  <ion-label interface="action-sheet" stacked> Last Name</ion-label>
+                <ion-input type="text" placeholder=" Last Name " name="last_name" [(ngModel)]="user.last_name" interface="action-sheet"></ion-input>
+              </ion-item>
+              <label class="error" *ngIf="errors.last_name">{{errors.last_name}}</label>
+              <!-- <ion-item>
+                  <ion-label interface="action-sheet" stacked> Date of birth</ion-label>
+                  <ion-input type="text" readonly placeholder=" Date of birth" name="dob" [(ngModel)]="user.dob" style="padding-left: 10px;"></ion-input>
+                </ion-item>
+                <label class="error" *ngIf="errors.dob">{{errors.dob}}</label> -->
+
+                <!--for disable the choose gender==style="pointer-events:none;"== -->
+                <ion-item >
+                    <ion-label interface="action-sheet" stacked> Gender</ion-label>
+                    <ion-select  interface="action-sheet" placeholder=" Gender" name="gender" [(ngModel)]="user.gender" style="padding-left: 10px;"> 
+                      <ion-option value="M">Male</ion-option>
+                      <ion-option value="F">Female</ion-option>
+                    </ion-select>
+                  </ion-item>
+                  <label class="error" *ngIf="errors.gender">{{errors.gender}}</label>
+                  <ion-item>
+                    <ion-label interface="action-sheet" stacked> Email Address</ion-label>
+                    <ion-input type="email" readonly placeholder=" Email Address " name="email" [(ngModel)]="user.email" interface="action-sheet"></ion-input>
+                  </ion-item>
+                  <label class="error" *ngIf="errors.email">{{errors.email}}</label>
+                  <ion-item style="pointer-events:none;">
+                    <ion-label interface="action-sheet" stacked> Mobile Number</ion-label>
+                    <ion-input type="number" placeholder=" Mobile Number " name="phone" [(ngModel)]="user.phone" interface="action-sheet"></ion-input>
+                  </ion-item>
+                  <label class="error" *ngIf="errors.phone">{{errors.phone}}</label>
+                  <ion-item>
+                    <ion-input type="text" placeholder="Promo/Voucher Code " name="code" [(ngModel)]="user.code" interface="action-sheet"></ion-input>
+                  </ion-item>
+                  <label class="error" *ngIf="errors.code">{{errors.code}}</label>
+                  <ion-item>
+                    <ion-select interface="action-sheet" placeholder="Quantity of tickets" name="qty" [(ngModel)]="user.qty" > 
+                      <ion-option value="1">1</ion-option>
+                      <ion-option value="2">2</ion-option>
+                      <ion-option value="3">3</ion-option>
+                      <ion-option value="4">4</ion-option>
+                      <ion-option value="5">5</ion-option>
+                      <ion-option value="6">6</ion-option>
+                      <ion-option value="7">7</ion-option>
+                      <ion-option value="8">8</ion-option>
+                      <ion-option value="9">9</ion-option>
+                      <ion-option value="10">10</ion-option>
+                      <ion-option value="11">11</ion-option>
+                      <ion-option value="12">12</ion-option>
+                      <ion-option value="13">13</ion-option>
+                      <ion-option value="14">14</ion-option>
+                      <ion-option value="15">15</ion-option>
+                      <ion-option value="16">16</ion-option>
+                      <ion-option value="17">17</ion-option>
+                      <ion-option value="18">18</ion-option>
+
+                    </ion-select>
+                  </ion-item>
+                  <label class="error" *ngIf="errors.qty">{{errors.qty}}</label>
+                  <ion-item>
+                    <ion-label text-wrap> I agree to the MEETMATCHANDGO terms and conditions and that all ticket holders are over 18 years old.</ion-label>
+                    <ion-checkbox color="dark" name="agree" [(ngModel)]="user.agree"></ion-checkbox>
+                  </ion-item>
+                  <label class="error" *ngIf="errors.agree">{{errors.agree}}</label>
+
+              
+                 <button ion-button round icon-star (click)="ticketRegistration()"> NEXT</button>   
+                </form>
+              
+              </ion-card-content>
+            
+            </ion-card>
+        
+      </ion-content>

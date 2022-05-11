@@ -1,0 +1,242 @@
+<!--
+Generated template for the ProfilePage page.
+
+See http://ionicframework.com/docs/components/#navigation for more info on
+Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <!-- <ion-grid style="align-items: normal;" >
+  <ion-row>
+  <ion-col col-3><button ion-button menuToggle>
+  <ion-icon style="font-size: 3.2rem;margin-top: 5px; " name="menu"> </ion-icon>
+  </button>
+  </ion-col>
+  <ion-col col-6><div style="width: 100% !important;
+  margin-right: 15% !important;
+  margin-top: -5px;">
+  <img style=" width: 100%;" src="assets/imgs/logo.jpg">
+  </div>
+  </ion-col>
+  <ion-col col-3><button ion-button (click)="opnchat()" style="background: transparent;
+  box-shadow: none;
+  margin-left: 20px;
+  margin-top: 0px;
+  color: #000000" ><ion-icon style="font-size: 3.2rem;margin-top: 5px; " name="chatbubbles"></ion-icon></button>
+  </ion-col>
+  </ion-row>
+  </ion-grid> -->
+    <button ion-button menuToggle>
+      <ion-icon name="menu"> </ion-icon>
+    </button>
+    <div class="img1">
+
+      <img src="assets/imgs/logo.jpg">
+
+    </div>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="opnchat()">
+        <ion-icon name="chatbubbles"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card class="card_io">
+
+    <ion-card-header>
+      <ion-avatar item-start>
+        <div class="img2"> <img (click)="getPhoto()" [src]="user.imageUrlThumb" style="border-radius: 50%; width:100px; height: 100px;"></div>
+        <h2 style="font-weight: 500; font-size: 18px; color: #efba00; text-align: center;">Touch Picture to Update</h2>
+
+      </ion-avatar>
+
+    </ion-card-header>
+
+    <ion-card-content>
+      <form id="home-form5" class="list">
+        <ion-item>
+          <ion-label interface="action-sheet" stacked> Select Title</ion-label>
+          <ion-select interface="action-sheet" name="title" [(ngModel)]="user.title" placeholder="Select Title" style="padding-left: 10px;">
+            <ion-option value="Mr">Mr</ion-option>
+            <ion-option value="Mrs">Mrs</ion-option>
+            <ion-option value="Ms">Ms</ion-option>
+            <ion-option value="Miss">Miss</ion-option>
+          </ion-select>
+        </ion-item>
+        <label class="error" *ngIf="errors.title">{{errors.title}}</label>
+        <ion-item>
+          <ion-label interface="action-sheet" stacked> First Name</ion-label>
+          <ion-input type="text" placeholder=" First Name" maxlength="30" name="first_name" [(ngModel)]="user.first_name"
+            interface="action-sheet"></ion-input>
+        </ion-item>
+        <label class="error" *ngIf="errors.first_name">{{errors.first_name}}</label>
+        <ion-item>
+          <ion-label interface="action-sheet" stacked> Last Name</ion-label>
+          <ion-input type="text" placeholder=" Last Name " maxlength="30" name="last_name" [(ngModel)]="user.last_name"
+            interface="action-sheet"></ion-input>
+        </ion-item>
+        <label class="error" *ngIf="errors.last_name">{{errors.last_name}}</label>
+        <ion-item>
+          <ion-label interface="action-sheet" stacked> Date of birth</ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY" placeholder=" Date" name="dob" [(ngModel)]="user.dob" style="padding-left: 10px;"></ion-datetime>
+        </ion-item>
+        <label class="error" *ngIf="errors.dob">{{errors.dob}}</label>
+        <ion-item style="pointer-events:none;">
+          <ion-label interface="action-sheet" stacked> Gender</ion-label>
+          <ion-select interface="action-sheet" placeholder=" Gender" name="gender" [(ngModel)]="user.gender" style="padding-left: 10px;">
+            <ion-option value="Male">Male</ion-option>
+            <ion-option value="Female">Female</ion-option>
+          </ion-select>
+        </ion-item>
+        <label class="error" *ngIf="errors.gender">{{errors.gender}}</label>
+        <ion-item>
+          <ion-label interface="action-sheet" stacked> Marital Status</ion-label>
+          <ion-select interface="action-sheet" placeholder="Marital Status" name="marrital_status" [(ngModel)]="user.marrital_status"
+            style="padding-left: 10px;">
+            <ion-option value="Single">Single</ion-option>
+            <ion-option value="Married">Married</ion-option>
+            <ion-option value="Divorced">Divorced</ion-option>
+            <ion-option value="Widow">Widow</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <label class="error" *ngIf="errors.marrital_status">{{errors.marrital_status}}</label>
+        <div style="text-align: left; padding-left: 10px">
+          <font color="#efba00">Personal details are strictly confidential however if a match is made your mobile,email
+            and city will be shared with your match.</font>
+        </div>
+        <!-- <ion-item>
+  <ion-label interface="action-sheet" stacked> Address</ion-label>
+  <ion-input type="text" placeholder=" Address " name="address" [(ngModel)]="user.address" interface="action-sheet"></ion-input>
+  </ion-item>
+  <label class="error" *ngIf="errors.address">{{errors.address}}</label> -->
+        <ion-item>
+          <ion-label interface="action-sheet" stacked> Country Name</ion-label>
+          <ion-select interface="action-sheet" placeholder="Select Country" name="country" #C (ionChange)="getCities(C.value,true)"
+            [(ngModel)]="user.country" style="padding-left: 10px;">
+            <ion-option *ngFor="let country of countryList; let i=index;" [value]="country.country_id" [selected]="country.country_id == user.country">{{country.name}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <label class="error" *ngIf="errors.country">{{errors.country}}</label>
+        <ion-item>
+          <ion-label interface="action-sheet" stacked> City Name</ion-label>
+          <ion-select interface="action-sheet" placeholder="Select City" name="city" [(ngModel)]="user.city" style="padding-left: 10px;">
+            <ion-option *ngFor="let city of cityList; let i=index;" [value]="city.zone_id" [selected]="city.zone_id == user.city">{{city.name}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <label class="error" *ngIf="errors.city">{{errors.city}}</label>
+        <div style="text-align: left; padding-left: 10px">
+          <font color="#efba00">Postcode is used to indicate distance in miles between you and a potential match.
+          </font>
+        </div>
+        <ion-item>
+          <ion-label interface="action-sheet" stacked> Postcode</ion-label>
+          <ion-input type="text" autocapitalize="none" placeholder=" Postcode " name="postcode" [(ngModel)]="user.postcode"
+            interface="action-sheet"></ion-input>
+        </ion-item>
+        <label class="error" *ngIf="errors.postcode">{{errors.postcode}}</label>
+        <ion-item>
+          <ion-label interface="action-sheet" stacked> Email Id</ion-label>
+          <ion-input type="email" placeholder=" Email Id " name="email" [(ngModel)]="user.email" readonly interface="action-sheet"></ion-input>
+        </ion-item>
+        <label class="error" *ngIf="errors.email">{{errors.email}}</label>
+        <div style="text-align: left; padding-left: 10px">
+          <font color="#efba00">
+            Please enter your mobile without the leading zero. Example 07944123456 should be entered as 447944123456 -
+            Then press "Get Authentication Code by Text
+          </font>
+        </div>
+
+        <ion-item style="pointer-events:none;">
+          <ion-label interface="action-sheet" stacked> Mobile Number</ion-label>
+          <ion-input type="number" placeholder="0000000000 " value="0000000000" name="phone" [(ngModel)]="user.phone "
+            interface="action-sheet" maxlength=10></ion-input>
+          <!-- == ''? '0000000000' :user.phone -->
+        </ion-item>
+        <!-- <label class="error" *ngIf="errors.phone">{{errors.phone}}</label> -->
+        <ion-item style="text-align: center">
+          <button ion-button round icon-start style="color:black;" (click)="changePhone()"> Press to Enter Mobile
+            Number </button>
+        </ion-item>
+        <ion-item *ngIf="changeNumber">
+          <ion-label interface="action-sheet" stacked>Enter New Number Here</ion-label>
+          <ion-input type="tel" placeholder=" " (keypress)="stateTrue()" maxlength="12" name="phone_reg" [(ngModel)]="user.phone_reg" interface="action-sheet"></ion-input>
+        </ion-item>
+
+        <label class="error" *ngIf="errors.phone_reg">{{errors.phone_reg}}</label><br>
+        <div *ngIf="getauth">
+          <button ion-button round icon-start style="padding: 6px 10px 0px 10px; margin-bottom: 12px; margin-top: -1px; "
+            *ngIf="changeNumber" (click)="sendOTP1()">
+            <h6 style="font-weight:bold;"> Get Authentication Code by Text </h6>
+          </button>
+        </div>
+
+        <div *ngIf="changeNumber">
+          <div [hidden]="!isOTP">
+            <ion-item>
+              <ion-input type="number" placeholder="Enter The code " name="otp_code" [(ngModel)]="user.otp_code"
+                required interface="action-sheet"></ion-input>
+            </ion-item>
+            <div [hidden]="!iscounters">
+              <p style="color: white;">{{timeLeft > 9? timeLeft : '0'+timeLeft}} Seconds Left for Resend Code</p>
+            </div>
+
+            <div [hidden]="!isresendOTP">
+
+              <button ion-button style="padding: 6px 10px 0px 10px; margin-bottom: 12px; margin-top: 4px; " (click)="sendOTP()"
+                round>
+                <h6 style="font-weight:bold;">Resend Authentication Code</h6>
+              </button>
+              <!-- <p style="color: white;">{{timeLeft1}} Seconds Left for Resend Code</p> -->
+            </div>
+
+            <label class="error" *ngIf="errors.otp_code">{{errors.otp_code}}</label>
+          </div>
+        </div>
+        <ion-item>
+          <ion-label interface="action-sheet" stacked> First Interest</ion-label>
+          <ion-select interface="action-sheet" placeholder="Select from Dropdown" name="interest1" [(ngModel)]="user.interest1"
+            style="padding-left: 10px;">
+            <ion-option *ngFor="let int of interests; let i=index;" [value]="int.id" [selected]="int.id == user.interest1">{{int.interest}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <label class="error" *ngIf="errors.interest1">{{errors.interest1}}</label>
+        <ion-item>
+          <ion-label interface="action-sheet" stacked> Second Interest</ion-label>
+          <ion-select interface="action-sheet" placeholder="Select from Dropdown" name="interest2" [(ngModel)]="user.interest2"
+            style="padding-left: 10px;">
+            <ion-option *ngFor="let int of interests; let i=index;" [value]="int.id" [selected]="int.id == user.interest2">{{int.interest}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <label class="error" *ngIf="errors.interest2">{{errors.interest2}}</label>
+        <ion-item>
+          <ion-label interface="action-sheet" stacked> About Me</ion-label>
+          <ion-textarea style="margin-left: 10px" #msgInput rows="3" maxLength="500" name="about_us" [(ngModel)]="user.about_us"
+            placeholder="Please enter something about yourself...."></ion-textarea>
+        </ion-item>
+        <label class="error" *ngIf="errors.about_us">{{errors.about_us}}</label><br><br>
+        <button ion-button round icon-start (click)="update()"> SUBMIT</button>
+      </form>
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>
+<ion-footer *ngIf="footer">
+  <ion-toolbar color="primary">
+    <ion-buttons>
+      <button ion-button icon-left (click)="presentActionSheet()">
+        <ion-icon name="camera"></ion-icon>Select Image
+      </button>
+      <button ion-button icon-left (click)="uploadImage()" [disabled]="lastImage === null">
+        <ion-icon name="cloud-upload"></ion-icon>Upload
+      </button>
+      <button ion-button icon-left (click)="cancle11()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

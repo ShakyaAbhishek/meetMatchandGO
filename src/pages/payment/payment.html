@@ -1,0 +1,172 @@
+<!--
+  Generated template for the TicketRegistrationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+      <!-- <ion-grid style="align-items: normal;" >
+          <ion-row>
+            <ion-col col-3><button ion-button menuToggle>
+                <ion-icon style="font-size: 3.2rem;margin-top: 5px; " name="menu"> </ion-icon>
+              </button>
+            </ion-col>
+            <ion-col col-6><div style="width: 100% !important;
+              margin-right: 15% !important;
+              margin-top: -5px;">
+                <img style="    width: 100%;" src="assets/imgs/logo.jpg">
+              </div>
+            </ion-col>
+            <ion-col col-3>
+              <button  ion-button (click)="opnchat()" style="background: transparent;
+              box-shadow: none;
+              margin-left: 20px;
+              margin-top: 0px;
+              color: #000000" ><ion-icon style="font-size: 3.2rem;margin-top: 5px; " name="chatbubbles"></ion-icon></button>
+            </ion-col>
+          </ion-row>
+        </ion-grid> -->
+        <button ion-button menuToggle>
+            <ion-icon name="menu"> </ion-icon>
+          </button>
+          <div class="img1" >
+            <img  src="assets/imgs/logo.jpg">
+          </div>
+          <ion-buttons  end>
+              <button ion-button icon-only (click)="opnchat()">
+                <ion-icon name="chatbubbles"></ion-icon>
+              </button>
+            </ion-buttons>
+    
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card style="    display: contents;" class="card_io">
+
+    <ion-card-header>
+       
+    </ion-card-header>
+  
+    <ion-card-content>
+      <table>
+        <tr>
+          <th colspan="3" style="background-color:#800020; text-align: center; padding-top: 8px;padding-bottom: 8px;"><font style="color: white;font-size: 15px;">SUMMARY</font></th>
+
+        </tr>
+        <tr>
+          <td><font style="color:#8b3532; font-weight:bold ">Event Type</font></td>
+         <td colspan="2">{{eventDetail.event_type}}</td>
+        </tr>
+        <tr>
+          <td><font style="color:#8b3532; font-weight:bold ">Venue</font></td>
+         <td colspan="2">{{eventDetail.location}}</td>
+        </tr>
+        <tr>
+          <td><font style="color:#8b3532; font-weight:bold ">Location</font></td>
+         <td colspan="2">{{eventDetail.place}}- {{eventDetail.zone}}</td>
+        </tr>
+        <tr>
+          <td><font style="color:#8b3532; font-weight:bold ">Date</font></td>
+      <!--   <td colspan="2">{{eventDetail.event_date}}</td> -->
+      <td colspan="2">{{eventDetail.date}}</td>
+        </tr>
+        <tr>
+          <td><font style="color:#8b3532; font-weight:bold ">Start Time</font></td>
+         <td colspan="2">{{eventDetail.start_time}}</td>
+        </tr>
+        <tr>
+          <td><font style="color:#8b3532; font-weight:bold ">Purchased By</font></td>
+         <td colspan="2">{{userdetail.first_name + ' ' + userdetail.last_name}}</td>
+        </tr>
+      </table>
+
+      <table>
+        <tr>
+          <th colspan="3" style="background-color:#800020; padding-top: 8px;padding-bottom: 8px; text-align: center;"><font style="color: white;font-size: 15px;">{{menTotal?menTotal:'No'}} {{menTotal<=1?'ticket has':'tickets have'}} been purchased for men</font></th>
+
+        </tr>
+      </table>
+      <table >
+        <tbody *ngFor="let m of men; let i=index;">
+        <tr>
+          <td><font style="color:#8b3532; font-weight:bold ">Name {{i+1}}</font></td>
+         <td colspan="2">{{m.first_name + ' ' + m.last_name}}</td>
+        </tr>
+        <tr>
+          <td><font style="color:#8b3532; font-weight:bold ">Email {{i+1}}</font></td>
+         <td colspan="2">{{m.email}}</td>
+        </tr>
+      </tbody>
+      </table>
+    <table *ngIf="men">
+      <tr>
+        <td colspan="3"></td>
+      </tr>
+    </table>
+
+    <table>
+        <tr>
+          <th colspan="3" style="background-color:#800020; padding-top: 8px;padding-bottom: 8px; text-align: center;"><font style=" color: white;font-size: 15px;">{{womenTotal?womenTotal:'No'}} {{womenTotal<=1?'ticket has':'tickets have'}} been purchased for women</font></th>
+
+        </tr>
+      </table>
+    
+        <table>
+            <tbody *ngFor="let wm of women; let i=index;">
+        <tr>
+          <td>
+            <font style="color:#8b3532; font-weight:bold ">Name {{i+1}}</font>
+          </td>
+          <td colspan="2">{{wm.first_name + ' ' + wm.last_name}}</td>
+        </tr>
+        <tr>
+          <td>
+            <font style="color:#8b3532; font-weight:bold ">Email {{i+1}}</font>
+          </td>
+          <td colspan="2">{{wm.email}}</td>
+        </tr>
+      </table>
+      <table *ngIf="women">
+        <tr>
+          <td colspan="3"></td>
+        </tr>
+      </tbody>
+      </table>
+      <table>
+        <tr *ngIf="price.discount">
+          <td>
+            <font style="color:#8b3532; font-weight:bold ">Coupon Discount Applied</font>
+          </td>
+          <td colspan="2">£{{price.discount}}</td>
+        </tr>
+        <tr *ngIf="price.gdiscount">
+          <td>
+            <font style="color:#8b3532; font-weight:bold ">Group Discount Applied</font>
+          </td>
+          <td colspan="2">£{{price.gdiscount}}</td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <th colspan="3" style="background-color:silver; text-align: center; padding-top: 8px;padding-bottom: 8px;"><font style=" color: green;font-size: 15px;">Order Total</font></th>
+
+        </tr>
+        <tr>
+          <td colspan="3">The total amount for your order is £{{price.total}}<br> <br>Please proceed to complete payment for your event by pressing the button to input your card details</td>
+        </tr>
+        <tr>
+          
+           <td colspan="3"><!--<div id="paypal-button" style="text-align: center;"></div><br>--><button ion-button color="danger" (click)="payment()" full>PROCEED TO MAKE PAYMENT</button></td>
+        </tr>
+      </table>
+
+      
+    
+    </ion-card-content>
+            
+            </ion-card>
+        
+      </ion-content>

@@ -1,0 +1,64 @@
+page-home {
+    .swiper-pagination-bullet-active{
+        background: #EFBA00;
+    }
+    form, input, optgroup, select{
+        text-align: center;
+    }
+    form{
+        background: #8b3532;
+    }
+    .item-md.item-block .item-inner{
+        border-color: #efba00;
+    }
+    .item{
+        background: #55081f;
+        color: #efba00;
+    }
+    .label, .select .select-icon .select-icon-inner,.picker .picker-button{
+        color:#efba00 !important;
+    }
+    .button-round{
+        background: #efba00;
+        text-transform: none;
+        font-size: 1.8rem;
+        font-weight: 800;
+    }
+    .item{
+        padding-left: 0;
+    }
+    .datetime .datetime-placeholder,.select .select-placeholder{
+        color: #efba00;
+        padding-left: 10px;
+    }
+    ion-select{
+        width: 100%;
+        max-width: 100% !important;
+    }
+   
+    .img1 {
+        max-width: 72%;
+        border: 0;
+        /* padding-left: 20%; */
+    }
+    .scroll-content{
+        background: #8b3532;
+    }
+    .label-md[stacked], .label-md[floating] {
+        margin-left: 7px;
+        margin-bottom: 0;
+    }
+    .item-label-stacked .select-md, .datetime-md, .item-label-floating .select-md {
+        padding-left: 7px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+    
+    // .datetime-ios .datetime-placeholder {
+    //     color: #efba00;
+    //     padding: 0px 0px 0px 5px;
+    // }
+}
+// element.style {
+//     padding-left: 7px;
+// }

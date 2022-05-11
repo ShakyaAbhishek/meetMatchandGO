@@ -1,0 +1,238 @@
+<!--
+  Generated template for the SignupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+      <!-- <ion-grid style="align-items: normal;" >
+          <ion-row>
+            <ion-col col-3><button ion-button menuToggle>
+                <ion-icon style="font-size: 3.2rem;margin-top: 5px; " name="menu"> </ion-icon>
+              </button>
+            </ion-col>
+            <ion-col col-6><div style="width: 100% !important;
+              margin-right: 15% !important;
+              margin-top: -5px;">
+                <img style="    width: 100%;" src="assets/imgs/logo.jpg">
+              </div>
+            </ion-col>
+            <ion-col col-3>
+              <button  ion-button (click)="opnchat()" style="background: transparent;
+              box-shadow: none;
+              margin-left: 20px;
+              margin-top: 0px;
+              color: #000000" ><ion-icon style="font-size: 3.2rem;margin-top: 5px; " name="chatbubbles"></ion-icon></button>
+            </ion-col>
+          </ion-row>
+        </ion-grid> -->
+        <button ion-button menuToggle>
+            <ion-icon name="menu"> </ion-icon>
+          </button>
+          <div class="img1" >
+            <img style="margin-right: 15%;" src="assets/imgs/logo.jpg">
+          </div>
+          <!-- <ion-buttons  end>
+              <button ion-button icon-only (click)="opnchat()">
+                <ion-icon name="chatbubbles"></ion-icon>
+              </button>
+            </ion-buttons> -->
+    
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card class="card_io">
+    <form>
+
+      <ion-card-header>
+              <ion-avatar item-start>
+                <div style=" color: #efba00; font-weight: 1000; font-size: 1.9rem;">Register Here</div>
+                
+              </ion-avatar>
+      </ion-card-header>
+    
+      <ion-card-content>
+          <form id="home-form5" class="list">
+            <ion-item>
+                <ion-label interface="action-sheet" stacked> Select Title</ion-label>
+                <ion-select interface="action-sheet" placeholder="Select from Dropdown" name="title" [(ngModel)]="user.title" style="padding-left: 7px;" required > 
+                  <ion-option value="Mr">Mr</ion-option>
+                  <ion-option value="Mrs">Mrs</ion-option>
+                  <ion-option value="Ms">Ms</ion-option>
+                  <ion-option value="Miss">Miss</ion-option>
+                </ion-select>
+              </ion-item>
+              <label class="error" *ngIf="errors.title">{{errors.title}}</label>
+              <ion-item>
+                  <ion-label interface="action-sheet" stacked> First Name</ion-label>
+                  <ion-input type="text" placeholder=" " maxlength="30" [(ngModel)]="user.first_name" name="first_name" interface="action-sheet" required></ion-input>
+                </ion-item>
+                <label class="error" *ngIf="errors.first_name">{{errors.first_name}}</label>
+                <ion-item>
+                    <ion-label interface="action-sheet" stacked> Last Name</ion-label>
+                  <ion-input type="text" placeholder="  " maxlength="30" [(ngModel)]="user.last_name" name="last_name" required interface="action-sheet"></ion-input>
+                </ion-item>
+                <label class="error" *ngIf="errors.last_name">{{errors.last_name}}</label>
+                <ion-item>
+                    <ion-label interface="action-sheet" stacked> Date of birth</ion-label>
+                    <ion-datetime displayFormat="DD/MM/YYYY" placeholder=" Click to enter DOB" [(ngModel)]="user.dob" name="dob" id="dateofbirth" required style="padding-left: 10px;"></ion-datetime>
+                  </ion-item>
+                  <label class="error" *ngIf="errors.dob">{{errors.dob}}</label>
+                  <ion-item>
+                      <ion-label interface="action-sheet" stacked> Gender</ion-label>
+                      <ion-select interface="action-sheet" placeholder=" Select from Dropdown" name="gender" [(ngModel)]="user.gender" required style="padding-left: 10px;"> 
+                        <ion-option value="M">Male</ion-option>
+                        <ion-option value="F">Female</ion-option>
+                      </ion-select>
+                    </ion-item>
+                    <label class="error" *ngIf="errors.gender">{{errors.gender}}</label>
+
+                 
+
+                 <ion-item>
+                        <ion-label interface="action-sheet" stacked> Marital Status</ion-label>
+                        <ion-select interface="action-sheet" placeholder="Select from Dropdown" name="marrital_status" [(ngModel)]="user.marrital_status" required style="padding-left: 10px;"> 
+                          <ion-option value="single">Single</ion-option>
+                          <ion-option value="married" >Married</ion-option>
+                          <ion-option value="divorced" >Divorced</ion-option>
+                          <ion-option value="widow">Widow</ion-option>
+                        </ion-select>
+                      </ion-item>
+                      <label class="error" *ngIf="errors.marrital_status">{{errors.marrital_status}}</label>
+                      
+              <ion-item>
+                <ion-label interface="action-sheet" stacked> Country Name</ion-label>
+                <ion-select interface="action-sheet" placeholder="Select from Dropdown" name="country" #C (ionChange)="getCities(C.value,true)"
+                  [(ngModel)]="user.country" style="padding-left: 10px;">
+                  <ion-option *ngFor="let country of countryList; let i=index;" [value]="country.country_id" [selected]="country.country_id == user.country">{{country.name}}</ion-option>
+                </ion-select>
+              </ion-item>
+              <label class="error" *ngIf="errors.country">{{errors.country}}</label>
+              <ion-item>
+                <ion-label interface="action-sheet" stacked> City Name</ion-label>
+                <ion-select interface="action-sheet" placeholder="Select from Dropdown" name="city" [(ngModel)]="user.city" style="padding-left: 10px;">
+                  <ion-option *ngFor="let city of cityList; let i=index;" [value]="city.zone_id" [selected]="city.zone_id == user.city">{{city.name}}</ion-option>
+                </ion-select>
+              </ion-item>
+              <label class="error" *ngIf="errors.city">{{errors.city}}</label>
+              <ion-item>
+                <ion-label interface="action-sheet" stacked> Postcode</ion-label>
+                <ion-input type="text" placeholder="   " name="postcode" [(ngModel)]="user.postcode" interface="action-sheet"></ion-input>
+              </ion-item>
+              <label class="error" *ngIf="errors.postcode">{{errors.postcode}}</label>
+                <ion-item>
+                    <ion-label interface="action-sheet" stacked> Email Address</ion-label>
+                    <ion-input type="email" placeholder="   " name="email" [(ngModel)]="user.email" required interface="action-sheet"></ion-input>
+                  </ion-item>
+                  <label class="error" *ngIf="errors.email">{{errors.email}}</label>
+                  <br>
+                     <!-- <div style="text-align: left; padding-left: 10px">
+                       <font color="#efba00">
+                        Please enter your mobile number with no spaces - example 447944123456 <br>
+                        Once entered press <span style="font-weight: 700;">GET CODE</span>  to have a code sent to you by text, enter this code in the box below which confirms your mobile number.
+                       </font></div>
+              
+                    <ion-item>
+                        <ion-label interface="action-sheet" stacked> Mobile Number</ion-label>
+                        <ion-input type="number" placeholder="  "  name="phone" [(ngModel)]="user.phone"  required interface="action-sheet"></ion-input>
+                      </ion-item>
+                      <label class="error" *ngIf="errors.mobile">{{errors.phone}}</label><br>
+                      <button ion-button round icon-start (click)="sendOTP()" [hidden]="disabled" > Get Code</button>
+                     <div [hidden]="!isOTP">
+                      <ion-item >
+                        <ion-input type="number" placeholder="Enter Code from Text Message "  name="otp_code" [(ngModel)]="user.otp_code" required interface="action-sheet"></ion-input>
+                      </ion-item>
+                      <p style="color: white;" >{{timeLeft}} Seconds Left for Resend Code</p>
+                      <div [hidden]="!isresendOTP">
+                          
+                          <button ion-button color="#ea5d4c" (click)="sendOTP()" round>Resend Code</button></div>
+                      
+                      
+                    </div>
+                    <label class="error" *ngIf="errors.otp_code">{{errors.otp_code}}</label> -->
+                      <ion-item>
+                          <ion-label interface="action-sheet" stacked> Password</ion-label>
+                          <ion-input type="Password" placeholder="  " name="password" [(ngModel)]="user.password" required interface="action-sheet"></ion-input>
+                        </ion-item>
+                        <label class="error" *ngIf="errors.password">{{errors.password}}</label>
+                        <ion-item>
+                            <ion-label interface="action-sheet" stacked> Repeat Password</ion-label>
+                            <ion-input type="password" placeholder="  " name="conf_password" [(ngModel)]="user.conf_password" required interface="action-sheet"></ion-input>
+                          </ion-item>
+                          <label class="error" *ngIf="errors.conf_password">{{errors.conf_password}}</label>
+                          <ion-item>
+                            <label class="text" interface="action-sheet" stacked>  How did you hear about us?</label><br>
+                            <select value="Select from Dropdown" name="hear_aboutus" [(ngModel)]="user.hear_aboutus" required style="padding-left: 10px; border-color: transparent; background-color: transparent; margin: 5px 0px 0px 0px; width:100%; ">
+                                <optgroup class="txt" label="SEARCH ENGINE">
+                                  <option value="Google">GOOGLE</option>
+                                  <option value="Yahoo">YAHOO</option>
+                                  <option value="Bing">BING</option>
+                                  <option value="Other">OTHER</option>
+                                </optgroup> 
+                                <optgroup class="txt" label="WEBSITE / SOCIALMEDIA">
+                                    <option value="Facebook">FACEBOOK</option>
+                                    <option value="Twitter">TWITTER</option>
+                                    <option value="Meetup">MEETUP</option>
+                                    <option value="Gumtree">GUMTREE</option>
+                                    <option value="Googleplus">GOOGLEPLUS</option>
+                                    <option value="Skiddle">SKIDDLE</option>
+                                    <option value="Linkedin">LINKEDIN</option>
+                                    <option value="Pinterest">PINTEREST</option>
+                                    <option value="Instagram">INSTAGRAM</option>
+                                    <option value="Othersocialwebsite">OTHERSOCIALWEBSITE</option>
+                                  </optgroup> 
+                                  <optgroup class="txt" label="PREVIOUS">
+                                      <option value="Previous Attendee">PREVIOUS ATTENDEE</option>
+                              
+                                    </optgroup>  
+                                    <optgroup class="txt" label="OTHER">
+                                      <option value="Friend">FRIEND</option>
+                                      <option value="Flyer">FLYER</option>
+                                      <option value="Newspaper">NEWSPAPER</option>
+                                      <option value="Internet">INTERNET</option>
+                                      <option value="Magazine">MAGAZINE</option>
+                                      
+                                    </optgroup> 
+                              </select>                
+                        
+                        </ion-item>
+                    <!-- <ion-item>
+                        <ion-label interface="action-sheet" stacked>  How did you hear about us?</ion-label>
+                        <ion-select interface="action-sheet" placeholder="Select from Dropdown" name="hear_aboutus" [(ngModel)]="user.hear_aboutus" required style="padding-left: 10px;"> 
+                       <optgroup  label="Group 2">
+                          <ion-option value="Search Engine/Social Media"> SEARCH ENGINE/SOCIAL MEDIA </ion-option>
+                        <ion-option value="Website">WEBSITE</ion-option>
+                        <ion-option value="Previous Attedendee">PREVIOUS ATTEDENDEE</ion-option>
+                        <ion-option value="Friend">FRIEND</ion-option>
+                        <ion-option value="Flyer">FLYER</ion-option>
+                        <ion-option value="News Paper">NEWS PAPER</ion-option>
+                        <ion-option value="Internet">INTERNET</ion-option>
+                        <ion-option value="Magazine">MAGAZINE</ion-option>
+                          </optgroup>
+                      </ion-select>
+                    </ion-item> -->
+                    <label class="error" *ngIf="errors.hear_aboutus">{{errors.hear_aboutus}}</label>
+                    <br>
+                      <!-- <ion-item>
+                        <ion-label text-wrap> Due to data privacy regulations please confirm that you are happy for us to store your details, they will not be shared with any other third parties. Also that you agree to terms and conditions of use.</ion-label>
+                        <ion-checkbox color="dark" name="terms_confirmed" value="1" [(ngModel)]="user.terms_confirmed"></ion-checkbox>
+                      </ion-item> -->
+                  <div class="term">
+                   <ion-checkbox color="dark" name="terms_confirmed" value="1" [(ngModel)]="user.terms_confirmed"></ion-checkbox>
+      <a href="#" style="color: #efba00; font-size: 15px; " (click)="condition()">Terms and Conditions</a>
+      
+    </div>
+    <label class="error" *ngIf="errors.terms_confirmed">{{errors.terms_confirmed}}</label><br>
+     <!-- <br> -->
+              <button ion-button round icon-start type="button" (click)="signup()"> Register Now</button>
+              <!-- <button ion-button round icon-start (click)="login()"> LOGIN</button> -->
+            </form>
+      </ion-card-content>
+    </form>
+    </ion-card>
+ 
+
+</ion-content>

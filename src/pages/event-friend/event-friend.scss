@@ -1,0 +1,55 @@
+page-event-friend {
+    .img1 {
+        max-width: 72%;
+        border: 0;
+        /* padding-left: 20%; */
+    }
+    
+    .thumb-img {
+        padding: 0px;
+    }
+    .scroll-content {
+        background:url("../assets/imgs/background_img.jpg") ;
+        background-size: 100% 100%;
+        margin-top: 58px;
+        padding-top: 58px;
+      }
+      .list-md {
+        margin: 0px 0 5px;
+    }
+    .list-ios {
+        margin: 0px 0 5px;
+    }
+    .card_io {
+        margin: 10px;
+        text-align: center;
+        border-radius: 10px;
+        width: calc(100% - 20px);
+        font-size: 1.4rem;
+        opacity: 0.8;
+        filter: alpha(opacity=50);
+        background-color: #800020;
+        -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    }
+    .item-md ion-avatar ion-img, .item-md ion-avatar img {
+        border-radius: 50%;
+        overflow: hidden;
+        width: 70px;
+        height: 70px;
+    }
+    .item-ios ion-avatar ion-img, .item-ios ion-avatar img {
+        border-radius: 50%;
+        overflow: hidden;
+        width: 70px;
+        height: 70px;
+    }
+    #notifications-badge {
+        
+        position: absolute;
+        top: 16px;
+        right: 27px;
+        border-radius: 10%;
+    }
+    
+}

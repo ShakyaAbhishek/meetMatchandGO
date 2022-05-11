@@ -1,0 +1,87 @@
+page-ticket-holder-details {
+    .img1 {
+        max-width: 72%;
+        border: 0;
+        /* padding-left: 20%; */
+    }
+    .scroll-content {
+        background:url("../assets/imgs/background_img.jpg") ;
+        background-size: 100% 100%;
+        margin-top: 58px;
+        padding-top: 58px;
+      }   
+      .card_io{
+        opacity: 0.8;
+        filter: alpha(opacity=50);
+        background-color: #800020;
+        box-shadow: 4px 4px 4px 4px;
+      }
+      
+      .swiper-pagination-bullet-active{
+        background: #EFBA00;
+    }
+    form, optgroup, select{
+        text-align: center;
+    }
+    form{
+        background: #8b3532;
+    }
+    .item-md.item-block .item-inner{
+        border-color: #efba00;
+    }
+    .item{
+        background: #55081f;
+        color: #efba00;
+        border-bottom: 1px solid;
+    }
+    .label, .select .select-icon .select-icon-inner,.picker .picker-button{
+        color:#efba00 !important;
+    }
+    .button-round{
+        background: #efba00;
+        text-transform: none;
+        font-size: 1.8rem;
+        font-weight: 800;
+    }
+    .item{
+        padding-left: 0;
+    }
+    .datetime .datetime-placeholder,.select .select-placeholder{
+        color: #efba00;
+    }
+    ion-select{
+        width: 100%;
+        max-width: 100% !important;
+    }
+  
+  
+    .text-input::-moz-placeholder {
+        color: #efba00;
+      }
+      
+      .text-input:-ms-input-placeholder {
+        color: #efba00;
+      }
+      
+      .text-input::-webkit-input-placeholder {
+        text-indent: 0;
+        color:  #efba00;
+      }
+     ion-label{
+         padding-left: 10px;
+     } 
+     ion-input{
+         padding-left: 7px;
+     }
+     .lable-heading{
+        font-size: 2rem !important;
+        font-weight: 500;
+        color: #fff !important;
+     }
+     .card-md h2{
+         padding: 1rem 0;
+     }
+     .disable-select{
+         pointer-events: none;
+     }
+}

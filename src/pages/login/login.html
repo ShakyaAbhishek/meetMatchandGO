@@ -1,0 +1,76 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <!-- <ion-grid style="align-items: normal;" >
+            <ion-row>
+              <ion-col col-3><button ion-button menuToggle>
+                  <ion-icon style="font-size: 3.2rem;margin-top: 5px; " name="menu"> </ion-icon>
+                </button>
+              </ion-col>
+              <ion-col col-6><div style="width: 100% !important;
+                margin-right: 15% !important;
+                margin-top: -5px;">
+                  <img style="    width: 100%;" src="assets/imgs/logo.jpg">
+                </div>
+              </ion-col>
+              <ion-col col-3>
+                <button  ion-button (click)="opnchat()" style="background: transparent;
+                box-shadow: none;
+                margin-left: 20px;
+                margin-top: 0px;
+                color: #000000" ><ion-icon style="font-size: 3.2rem;margin-top: 5px; " name="chatbubbles"></ion-icon></button>
+              </ion-col>
+            </ion-row>
+          </ion-grid> -->
+          <button ion-button menuToggle>
+              <ion-icon name="menu"> </ion-icon>
+            </button>
+            <div class="img1">
+              <img style="margin-right: 15%;" src="assets/imgs/logo.jpg">
+            </div>
+            <!-- <ion-buttons *ngIf="logged==true" end>
+                <button ion-button icon-only (click)="opnchat()">
+                  <ion-icon name="chatbubbles"></ion-icon>
+                </button>
+              </ion-buttons> -->
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content>
+    <ion-card class="card_io">
+      <form>
+
+        <ion-card-header>
+         <font color="#efba00">Login Here</font>
+        </ion-card-header>
+      
+        <ion-card-content>
+          <ion-item>
+              <ion-label interface="action-sheet" stacked style="padding-left: 10px;"> Email Address</ion-label>
+            <ion-input type="email" placeholder=" " name="email" [(ngModel)]="user.email" interface="action-sheet" style="padding-left: 7px;" required></ion-input>
+            
+          </ion-item>
+          <label class="error" *ngIf="errors.email">{{errors.email}}</label>
+          <ion-item>
+              <ion-label interface="action-sheet" stacked style="padding-left: 10px;"> Password</ion-label>
+            <ion-input type="password" placeholder=" " name="password" [(ngModel)]="user.password" interface="action-sheet" required style="padding-left: 7px;"></ion-input>
+          </ion-item>
+          <label class="error" *ngIf="errors.password">{{errors.password}}</label>
+          <br>
+          <a href="#" style="color: #efba00; text-align:center;" (click)="forgot()">Forgot Password?</a>           
+          &nbsp;
+
+          <a href="#" style="color: #efba00; text-align:center;" (click)="signup()">Register</a>
+
+        </ion-card-content>
+        <button ion-button round icon-start (click)="login()"> LOGIN</button>
+        <!-- <button ion-button round icon-start (click)="signup()"> SIGN UP</button> -->
+      </form>
+      </ion-card>
+</ion-content>

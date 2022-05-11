@@ -1,0 +1,217 @@
+<!--
+  Generated template for the RecivedRequestPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+      <!-- <ion-grid style="align-items: normal;" >
+          <ion-row>
+            <ion-col col-3><button ion-button menuToggle>
+                <ion-icon style="font-size: 3.2rem;margin-top: 5px; " name="menu"> </ion-icon>
+              </button>
+            </ion-col>
+            <ion-col col-6><div style="width: 100% !important;
+              margin-right: 15% !important;
+              margin-top: -5px;">
+                <img style="    width: 100%;" src="assets/imgs/logo.jpg">
+              </div>
+            </ion-col>
+            <ion-col col-3>
+              <button  ion-button (click)="opnchat()" style="background: transparent;
+              box-shadow: none;
+              margin-left: 20px;
+              margin-top: 0px;
+              color: #000000" ><ion-icon style="font-size: 3.2rem;margin-top: 5px; " name="chatbubbles"></ion-icon></button>
+            </ion-col>
+          </ion-row>
+        </ion-grid> -->
+        <button ion-button menuToggle>
+            <ion-icon name="menu"> </ion-icon>
+          </button>
+          <div class="img1" >
+            <img style="margin-right: 15%;" src="assets/imgs/logo.jpg">
+          </div>
+          <!-- <ion-buttons *ngIf="logged==true" end>
+              <button ion-button icon-only (click)="opnchat()">
+                <ion-icon name="chatbubbles"></ion-icon>
+              </button>
+            </ion-buttons> -->
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <div style="text-align: center; color: #efba00; font-size: 20px; opacity: 0.8; filter: alpha(opacity=50); background-color: #800020; border-radius: 20px; margin: 5px 50px 0px 50px;">Event Matched Friends </div>
+    <!-- <ion-card class="card_io" *ngFor="let request of requests; let i=index;">
+      
+          <ion-avatar item-start >
+              <img style=" height: 120px; width: 120px; border-radius: 63px; margin-top: 6px;" [src]="request.sender_detail.id==loggedId?request.receiver_detail.image:request.sender_detail.image">
+            </ion-avatar>
+            <h2 style="color: #efba00; font-weight: 700 " >{{request.sender_detail.id==loggedId?request.receiver_detail.first_name+' '+request.receiver_detail.last_name:request.sender_detail.first_name+' '+request.sender_detail.last_name}}</h2>
+            
+          
+            <hr style=" background-color: #efba00;height: 2px;">
+      
+      <ion-card-content>
+        
+          <div  *ngIf="request.is_blocked==false">
+              <ion-row>
+                <ion-col col-6 >
+              <button ion-button round  icon-start type="button" style="
+              font-size: 15px;
+              margin-top: -19px;
+              color: #000;
+              max-width: 90px;
+              background-color: #efba00;
+          "  (click)="chat(request.sender_detail.id==loggedId ? request.receiver_detail : request.sender_detail)">Chat</button>
+        </ion-col>
+        <ion-col col-6 >
+          <button ion-button round  icon-start type="button" style="          
+              font-size: 15px;
+              margin-top: -19px;
+              color: #000;
+              max-width: 90px;
+              background-color: #efba00;
+      " (click)="blocked(request.sender_detail.id==loggedId ? request.receiver_detail.id : request.sender_detail.id,1)" value="true" >Block</button>
+    </ion-col>
+            </ion-row>
+          </div>
+          <div  *ngIf="request.is_blocked==true">
+            <button ion-button round  icon-start type="button" style="          
+            font-size: 15px;
+            margin-top: -19px;
+            color: #000;
+            background-color: #efba00;
+      " (click)="blocked(request.sender_detail.id==loggedId ? request.receiver_detail.id : request.sender_detail.id,0)" value="false" >Unblock</button>
+             </div>
+      </ion-card-content>
+    </ion-card> -->
+    
+     <ion-list *ngFor="let request of requests; let i=index;">
+        <ion-item style=" border: 1px solid; border-radius: 10px; border-color: #efba00; margin: 5px 0 0 0; opacity: 0.8; filter: alpha(opacity=50); background-color: #800020; height: 82px;">
+          <ion-avatar item-start>
+            <img [src]="request.sender_detail.id==loggedId?request.receiver_detail.image:request.sender_detail.image" class="thumb-img"  (click)="openpic(request.sender_detail.id==loggedId?request.receiver_detail.image:request.sender_detail.image)"  />
+            <!--imageViewer -->
+          </ion-avatar>
+          <h2 style="color: #efba00; margin: 7px 0px -10px 10px; font-size: 2.0rem;" >
+              {{request.sender_detail.id==loggedId?request.receiver_detail.first_name :request.sender_detail.first_name}}
+              <ion-badge id="notifications-badge" color="danger" *ngIf="allmessages[i]">{{allmessages[i]}}</ion-badge> 
+            </h2>
+            <!-- first name - last name -->
+          <!-- <h2 style="color: #efba00; margin: -2px 0px 0px 5px; font-size: 2.0rem;" >
+            {{request.sender_detail.id==loggedId?request.receiver_detail.first_name+' '+request.receiver_detail.last_name:request.sender_detail.first_name+' '+request.sender_detail.last_name}}
+            <ion-badge id="notifications-badge" color="danger" *ngIf="allmessages[i]">{{allmessages[i]}}</ion-badge> 
+          </h2> -->
+          <!-- <h2 style="color: #efba00; margin: -2px 0px 0px 5px; font-size: 2.0rem;" >
+              {{request.sender_detail.id==loggedId?request.receiver_detail.event_type+' ':request.sender_detail.event_type+' '}}
+          </h2> -->
+          <p>{{request.location}}</p>
+          <ion-grid *ngIf="request.is_blocked==false" >
+
+            <ion-row>
+              <ion-col col-6>
+                  <button ion-button full style="
+                   font-size: 18px;
+                  color: #000;
+                  height: 30px;
+                  width: 98px;
+                  background-color: #efba00;
+                  border-radius: 10px;
+                  /* margin: 0px 0px 0px -5px;
+                  padding: 5px 15px 5px 15px; */
+              "  (click)="chat(request.sender_detail.id==loggedId ? request.receiver_detail : request.sender_detail,request.is_blocked)">Chat</button>
+        
+              </ion-col>
+              <ion-col col-6>
+
+                
+                  <button ion-button full style="
+                     font-size: 18px;
+                  color: #000;
+                  height: 30px;
+                  width: 98px;
+                  background-color: #efba00;
+                  border-radius: 10px;
+                 /* margin: 0px 0px 0px 0px;
+                  padding: 5px 15px 5px 15px;  */ "
+               (click)="blocked(request.sender_detail.id==loggedId ? request.receiver_detail.id : request.sender_detail.id,1)" value="true" >Block</button>
+                   
+              </ion-col>
+            </ion-row>
+
+          </ion-grid>
+          <!-- <div style=" margin: 5px 24px 5px 0px;" *ngIf="request.is_blocked==false">
+          <a style="
+          font-size: 2.0rem;
+          color: #000;
+          background-color: #efba00;
+          border-radius: 10px;
+          margin: 0px 0px 0px 18px;
+          padding: 2px 10px 2px 10px;
+      "  (click)="chat(request.sender_detail.id==loggedId ? request.receiver_detail : request.sender_detail)">Chat</a>
+
+      <a style="
+      font-size: 2.0rem;
+      color: #000;
+      background-color: #efba00;
+      border-radius: 10px;
+      margin: 0px 0px 0px 18px;
+      padding: 2px 10px 2px 10px;"
+   (click)="blocked(request.sender_detail.id==loggedId ? request.receiver_detail.id : request.sender_detail.id,1)" value="true" >Block</a>
+         </div> -->
+
+         <ion-grid  *ngIf="request.is_blocked==true">
+           <ion-row>
+             <ion-col col-6>
+                <button ion-button full style="
+                font-size: 18px;
+                color: #000;
+                height: 30px;
+                width: 98px;
+                background-color: #efba00;
+                border-radius: 10px;
+                margin: 1px 0px -26px -1px;
+                padding: 2px 10px 2px 10px;"
+                
+                *ngIf="request.block_detail.blocked_by==loggedId"
+                (click)="blocked(request.sender_detail.id==loggedId ? request.receiver_detail.id : request.sender_detail.id,0)"  >Unblock</button>
+                <label style=" color: #fff; font-size: 14px " *ngIf="request.block_detail.user_id==loggedId">You are blocked by Your friend</label><br>
+                <button *ngIf="request.block_detail.user_id==loggedId" style="
+                font-size: 18px;
+                color: #000;
+                height: 30px;
+                height: 25px;
+                width: 150px;
+                background-color: #efba00;
+                border-radius: 10px;
+                margin-bottom: 5px;
+                /* margin: 1px 0px -26px 0px; */
+                padding: 2px 10px 2px 10px;" ion-button (click)="chat(request.sender_detail.id==loggedId ? request.receiver_detail : request.sender_detail,request.is_blocked)">Open chat</button>
+             </ion-col>
+           </ion-row>
+         </ion-grid>
+     <!-- <div style="margin: 5px 24px 5px 2px;" *ngIf="request.is_blocked==true">
+        
+      <a style="
+      font-size: 2.0rem;
+      color: #000;
+      background-color: #efba00;
+      border-radius: 10px;
+      margin: 0px 0px 0px 18px;
+      padding: 2px 10px 2px 10px;"
+      *ngIf="request.block_detail.blocked_by==loggedId"
+      (click)="blocked(request.sender_detail.id==loggedId ? request.receiver_detail.id : request.sender_detail.id,0)"  >Unblock</a>
+      <label style=" color: #fff " *ngIf="request.block_detail.user_id==loggedId">You are blocked by Your friend</label>
+         </div> -->
+        </ion-item>
+      </ion-list>
+      <ion-card class="card_io" *ngIf="!isrequests">
+          <h2 align="center" style="margin: 5px 0px 2px 0px; font-size: 20px; color: #efba00;">No Event Friends Found</h2>
+          
+      </ion-card>
+    
+   </ion-content>
+

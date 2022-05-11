@@ -1,0 +1,82 @@
+<!--
+  Generated template for the SendEnquiryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+      <!-- <ion-grid style="align-items: normal;" >
+          <ion-row>
+            <ion-col col-3><button ion-button menuToggle>
+                <ion-icon style="font-size: 3.2rem;margin-top: 5px; " name="menu"> </ion-icon>
+              </button>
+            </ion-col>
+            <ion-col col-6><div style="width: 100% !important;
+              margin-right: 15% !important;
+              margin-top: -5px;">
+                <img style="    width: 100%;" src="assets/imgs/logo.jpg">
+              </div>
+            </ion-col>
+            <ion-col col-3>
+              <button  ion-button (click)="opnchat()" style="background: transparent;
+              box-shadow: none;
+              margin-left: 20px;
+              margin-top: 0px;
+              color: #000000" ><ion-icon style="font-size: 3.2rem;margin-top: 5px; " name="chatbubbles"></ion-icon></button>
+            </ion-col>
+          </ion-row>
+        </ion-grid> -->
+        <button ion-button menuToggle>
+            <ion-icon name="menu"> </ion-icon>
+          </button>
+          <div class="img1" >
+            <img style="margin-right: 15%;" src="assets/imgs/logo.jpg">
+          </div>
+          <!-- <ion-buttons  end>
+              <button ion-button icon-only (click)="opnchat()">
+                <ion-icon name="chatbubbles"></ion-icon>
+              </button>
+            </ion-buttons> -->
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card class="card_io">
+
+      <ion-card-header>
+     <font style="color:#efba00"> SEND ENQUIRY </font>   
+      </ion-card-header>
+
+      <ion-card-content *ngIf="user">
+          <form id="home-form5" class="list">
+              <ion-item>
+                  <ion-label interface="action-sheet" stacked>Name</ion-label>
+                  <ion-input type="text" placeholder="  " name="name"  [(ngModel)]="user.name" interface="action-sheet" [ngModelOptions]="{standalone: true}"></ion-input>
+                </ion-item>
+                <label class="error" *ngIf="errors.name">{{errors.name}}</label>
+                <ion-item>
+                    <ion-label interface="action-sheet" stacked>Email</ion-label>
+                    <ion-input type="text" placeholder="  " name="email"  [(ngModel)]="user.email" interface="action-sheet" [ngModelOptions]="{standalone: true}">{{user.email}}</ion-input>
+                  </ion-item>
+                  <label class="error" *ngIf="errors.email">{{errors.email}}</label>
+                  <ion-item>
+                      <ion-label interface="action-sheet" stacked>Subject</ion-label>
+                      <ion-input type="text" placeholder="  " name="subject"  [(ngModel)]="user.subject" interface="action-sheet" [ngModelOptions]="{standalone: true}"></ion-input>
+                    </ion-item>
+                    <label class="error" *ngIf="errors.subject">{{errors.subject}}</label>
+                    <ion-item>
+                        <ion-label interface="action-sheet" stacked>Message</ion-label>
+                        <!-- <ion-input type="text" placeholder=" Message" name="message"  [(ngModel)]="user.message" interface="action-sheet" [ngModelOptions]="{standalone: true}"></ion-input> -->
+                        <ion-textarea #msgInput rows="3" maxLength="500"  name="message" [(ngModel)]="user.message" placeholder=" " interface="action-sheet" [ngModelOptions]="{standalone: true}" ></ion-textarea>
+                      </ion-item>
+                      <label class="error" *ngIf="errors.message">{{errors.message}}</label><br>
+                    <button ion-button round icon-start (click)="contactUs()" > SUBMIT </button>
+                    <!-- <button ion-button round icon-start> RESET </button> -->
+                              
+                  </form>
+                      
+      </ion-card-content>
+  </ion-card>
+</ion-content>

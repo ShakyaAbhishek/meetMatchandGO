@@ -1,0 +1,59 @@
+page-about {
+    .ion-logo-facebook:before {
+       
+        color: steelblue;
+    }
+    element.style {
+        color: #000;
+    }
+    .ion-logo-twitter:before {
+        
+        color: skyblue;
+    }
+    element.style {
+        color: black;
+    }
+    .ion-logo-googleplus:before {
+        
+        color: inherit;
+    }
+    .ion-logo-googleplus::before{
+        color: red;
+    }  
+    .toolbar-background {
+        border-color: white;
+        background: white;
+    }
+    // img {
+    //     max-width: 72%;
+    //     border: 0;
+    //     padding-left: 20%;
+    // }
+    // .img1 {
+    //     max-width: 72%;
+    //     border: 0;
+    //     /* padding-left: 20%; */
+    // }
+    // img{
+    //     width: 75% !important;
+    //     margin-right: 15% !important;
+    // }
+    .button-inner{
+        justify-content:flex-start;
+    }
+    .specific-button .button-inner{
+        justify-content:flex-start;
+   }
+   .headingline{
+    background-color: #800020;
+    padding: 6px 11px;
+   }
+   .aboutcontent{
+       padding: 0 3%;
+       text-align: justify;
+   }
+   .contenthead{
+    color: #800020;
+    text-align: center
+   }
+}

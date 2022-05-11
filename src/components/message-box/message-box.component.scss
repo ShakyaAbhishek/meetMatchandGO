@@ -1,0 +1,40 @@
+message-box {
+
+    display: flex;
+    margin-bottom: 10px;
+    
+
+    .text {
+        background-color:#800020;
+        opacity: 0.8;
+        padding: 7px 5px;
+        border-radius: 10px;
+        padding: 5px 10px 5px 10px;
+       // box-shadow: 1px 1px 3px #ccc;
+        color: #fff;
+       
+        p {
+            font-size: 1.1em;
+            margin: 0;
+        }
+        p.timestamp {
+            font-size: 0.8em;
+            margin-top: 5px;
+            color: #fff;
+        }
+    }
+
+    .sender-background {
+        background-color: #ffffff;
+        opacity: 0.8;
+        border-radius: 10px;
+        padding: 5px 10px 5px 10px;
+        color: #000000;
+        p.timestamp {
+            font-size: 0.8em;
+            margin-top: 5px;
+            color: #000;
+        }
+    }
+
+}
